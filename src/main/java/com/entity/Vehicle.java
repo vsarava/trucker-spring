@@ -9,37 +9,23 @@ import java.util.UUID;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Vehicle.findAll",query="SELECT vehicle FROM  Vehicle vehicle")
+        @NamedQuery(name = "Vehicle.getVehicles",query="SELECT vehicle FROM  Vehicle vehicle")
 
 })
 public class Vehicle {
 
     @Id
-    private String vehicleId;
-
     @Column(unique = true)
     private String vin;
 
     private String make;
     public String model;
     private int year;
-    private int redLineRpm;
+    private int redlineRpm;
     private int maxFuelVolume;
     private Date lastServiceDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Reading> reading;
-
-    public Vehicle(){
-        this.vehicleId = UUID.randomUUID().toString();
-    }
-
-    public String getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(String vehicleId) {
-        this.vehicleId = vehicleId;
+    public Vehicle() {
     }
 
     public String getVin() {
@@ -74,12 +60,12 @@ public class Vehicle {
         this.year = year;
     }
 
-    public int getRedLineRpm() {
-        return redLineRpm;
+    public int getRedlineRpm() {
+        return redlineRpm;
     }
 
-    public void setRedLineRpm(int redLineRpm) {
-        this.redLineRpm = redLineRpm;
+    public void setRedlineRpm(int redlineRpm) {
+        this.redlineRpm = redlineRpm;
     }
 
     public int getMaxFuelVolume() {
@@ -102,13 +88,5 @@ public class Vehicle {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
-
-    public List<Reading> getReading() {
-        return reading;
-    }
-
-    public void setReading(List<Reading> reading) {
-        this.reading = reading;
     }
 }

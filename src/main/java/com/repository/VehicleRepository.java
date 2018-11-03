@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface VehicleRepository {
 
-    List<Vehicle> findAll();
+    List<Vehicle> putVehicleData(List<Vehicle> vehicleData);
+    List<Vehicle> getVehicles();
 }

@@ -1,21 +1,23 @@
 package com.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Reading.getReadings",query="SELECT reading FROM  Reading reading")
+
+})
 public class Reading {
 
     @Id
     private String readingId;
 
     private String vin;
-    private double lattitude;
+    private double latitude;
     private double longitude;
     private Date timestamp;
     private double fuelVolume;
@@ -23,11 +25,15 @@ public class Reading {
     private int engineHp;
     private boolean checkEngineLightOn;
     private boolean engineCoolantLow;
-    private boolean cruiseCOntrolOn;
+    private boolean cruiseControlOn;
     private int engineRpm;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Tires tires;
+
+    public Reading() {
+        this.readingId = UUID.randomUUID().toString();
+    }
 
     public String getReadingId() {
         return readingId;
@@ -45,12 +51,12 @@ public class Reading {
         this.vin = vin;
     }
 
-    public double getLattitude() {
-        return lattitude;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLattitude(double lattitude) {
-        this.lattitude = lattitude;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
     public double getLongitude() {
@@ -115,12 +121,12 @@ public class Reading {
         this.engineCoolantLow = engineCoolantLow;
     }
 
-    public boolean isCruiseCOntrolOn() {
-        return cruiseCOntrolOn;
+    public boolean isCruiseControlOn() {
+        return cruiseControlOn;
     }
 
-    public void setCruiseCOntrolOn(boolean cruiseCOntrolOn) {
-        this.cruiseCOntrolOn = cruiseCOntrolOn;
+    public void setCruiseControlOn(boolean cruiseControlOn) {
+        this.cruiseControlOn = cruiseControlOn;
     }
 
     public int getEngineRpm() {
@@ -139,5 +145,22 @@ public class Reading {
         this.tires = tires;
     }
 
-
+    @Override
+    public String toString() {
+        return "Reading{" +
+                "readingId='" + readingId + '\'' +
+                ", vin='" + vin + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timestamp=" + timestamp +
+                ", fuelVolume=" + fuelVolume +
+                ", speed=" + speed +
+                ", engineHp=" + engineHp +
+                ", checkEngineLightOn=" + checkEngineLightOn +
+                ", engineCoolantLow=" + engineCoolantLow +
+                ", cruiseControlOn=" + cruiseControlOn +
+                ", engineRpm=" + engineRpm +
+                ", tires=" + tires.toString() +
+                '}';
+    }
 }
