@@ -8,8 +8,8 @@ import java.util.UUID;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Reading.getReadings",query="SELECT reading FROM  Reading reading")
-
+        @NamedQuery(name = "Reading.getReadings",query="SELECT reading FROM  Reading reading"),
+        @NamedQuery(name = "Reading.getReadingsByVin", query="SELECT reading FROM Reading reading WHERE reading.vin=:paramVin")
 })
 public class Reading {
 

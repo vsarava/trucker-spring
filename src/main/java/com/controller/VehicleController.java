@@ -24,8 +24,11 @@ public class VehicleController {
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Vehicle> getVehicles(){
-
         return vehicleService.getVehicles();
+    }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{paramVin}")
+    public Vehicle getVehicleByVin(@PathVariable("paramVin") String vin){
+        return vehicleService.getVehicleByVin(vin);
     }
 }

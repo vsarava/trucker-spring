@@ -9,8 +9,8 @@ import java.util.UUID;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Vehicle.getVehicles",query="SELECT vehicle FROM  Vehicle vehicle")
-
+        @NamedQuery(name = "Vehicle.getVehicles",query="SELECT vehicle FROM  Vehicle vehicle"),
+        @NamedQuery(name = "Vehicle.getVehicleByVin", query="SELECT vehicle FROM Vehicle vehicle WHERE vehicle.vin=:paramVin")
 })
 public class Vehicle {
 

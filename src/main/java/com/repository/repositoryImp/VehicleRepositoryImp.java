@@ -30,4 +30,11 @@ public class VehicleRepositoryImp implements VehicleRepository {
         TypedQuery<Vehicle> query = em.createNamedQuery("Vehicle.getVehicles", Vehicle.class);
         return query.getResultList();
     }
+
+    @Override
+    public Vehicle getVehicleByVin(String vin) {
+        TypedQuery<Vehicle> query = em.createNamedQuery("Vehicle.getVehicleByVin", Vehicle.class);
+        query.setParameter("paramVin",vin);
+        return query.getResultList().get(0);
+    }
 }

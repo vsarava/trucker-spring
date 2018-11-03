@@ -8,4 +8,5 @@ public interface VehicleRepository {
 
     List<Vehicle> putVehicleData(List<Vehicle> vehicleData);
     List<Vehicle> getVehicles();
+    Vehicle getVehicleByVin(String vin);
 }

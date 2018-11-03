@@ -29,4 +29,11 @@ public class ReadingRepositoryImp implements ReadingRepository {
         TypedQuery<Reading> query = em.createNamedQuery("Reading.getReadings", Reading.class);
         return query.getResultList();
     }
+
+    @Override
+    public List<Reading> getReadingsByVin(String vin) {
+        TypedQuery<Reading> query = em.createNamedQuery("Reading.getReadingsByVin", Reading.class);
+        query.setParameter("paramVin", vin);
+        return query.getResultList();
+    }
 }
